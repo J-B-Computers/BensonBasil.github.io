@@ -12,20 +12,21 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
         .container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
         }
-        h1, h2 {
-            color: #ccd6f6;
-        }
         h1 {
+            color: #ccd6f6;
             font-size: 3em;
+            text-align: center;
             margin-bottom: 20px;
         }
         h2 {
+            color: #64ffda;
             font-size: 2em;
             border-bottom: 1px solid #233554;
             padding-bottom: 10px;
@@ -48,15 +49,41 @@
         li {
             margin-bottom: 10px;
         }
-        .highlight {
+        .job-title {
             color: #64ffda;
+        }
+        .duration {
+            color: #ff6b6b;
+        }
+        .profile-pic {
+            display: block;
+            margin: 0 auto;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .profile-pic:hover {
+            transform: scale(1.1);
+        }
+        #background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
     </style>
 </head>
 <body>
+    <canvas id="background-animation"></canvas>
     <div class="container">
         <h1>Benson Basil</h1>
         
+        <img src="/api/placeholder/200/200" alt="Benson Basil" class="profile-pic">
+
         <div class="section" id="summary">
             <h2>Professional Summary</h2>
             <p>Experienced Software Engineer with a strong background in IT infrastructure, project management, and cybersecurity. Skilled in adapting technical solutions for high-profile events and optimizing operational efficiency. Passionate about leveraging technology to solve complex problems and enhance user experiences.</p>
@@ -64,28 +91,32 @@
 
         <div class="section" id="experience">
             <h2>Work Experience</h2>
-            <h3>One World Rental</h3>
+            <h3><span class="job-title">IT Support Specialist</span> - One World Rental</h3>
+            <p><span class="duration">June 2022 - Present</span></p>
             <ul>
                 <li>Managed IT infrastructure for high-profile events like Adelaide 500 V8 Supercars and Royal Melbourne Show</li>
                 <li>Oversaw installation of over 110 full square devices and managed 10 Starlink connections</li>
                 <li>Implemented strict access controls and security measures for critical systems</li>
             </ul>
 
-            <h3>ARB Corporation</h3>
+            <h3><span class="job-title">Warehouse Team Leader</span> - ARB Corporation</h3>
+            <p><span class="duration">January 2021 - May 2022</span></p>
             <ul>
                 <li>Led project to enhance operational efficiency within the team</li>
                 <li>Devised and implemented a more proficient system harmonizing with HR practices</li>
                 <li>Exceeded performance targets while maintaining high employee engagement</li>
             </ul>
 
-            <h3>JB Computers</h3>
+            <h3><span class="job-title">Manager</span> - JB Computers</h3>
+            <p><span class="duration">July 2018 - December 2020</span></p>
             <ul>
                 <li>Developed broad skill set through collaboration in family-run business</li>
                 <li>Cultivated strategic planning and operational oversight skills</li>
                 <li>Ensured legal compliance and proper documentation</li>
             </ul>
 
-            <h3>Geoscience Australia</h3>
+            <h3><span class="job-title">Intern</span> - Geoscience Australia</h3>
+            <p><span class="duration">January 2018 - June 2018</span></p>
             <ul>
                 <li>Gained insights into federal public service operations</li>
                 <li>Conducted chemical analysis and identified safe zones for mining</li>
@@ -112,6 +143,14 @@
             <h2>Personal Growth</h2>
             <p>Successfully managing ADHD and depression, turning challenges into strengths. These experiences have fostered resilience, empathy, and a unique problem-solving approach, enhancing both personal and professional development.</p>
         </div>
+
+        <div class="section" id="contact">
+            <h2>Contact</h2>
+            <p>Email: example@email.com</p>
+            <p>Phone: (123) 456-7890</p>
+            <p>LinkedIn: linkedin.com/in/example</p>
+            <p>GitHub: github.com/example</p>
+        </div>
     </div>
 
     <script>
@@ -130,6 +169,53 @@
                 section.style.transform = 'scale(1)';
             });
         });
+
+        const canvas = document.getElementById('background-animation');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 100;
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2 + 1,
+                color: `rgba(100, 255, 218, ${Math.random() * 0.5 + 0.1})`,
+                speed: Math.random() * 0.5 + 0.1
+            });
+        }
+
+        function drawParticles(mouseX, mouseY) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(particle => {
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                ctx.fillStyle = particle.color;
+                ctx.fill();
+
+                particle.x += particle.speed * (mouseX - canvas.width / 2) / 100;
+                particle.y += particle.speed * (mouseY - canvas.height / 2) / 100;
+
+                if (particle.x < 0) particle.x = canvas.width;
+                if (particle.x > canvas.width) particle.x = 0;
+                if (particle.y < 0) particle.y = canvas.height;
+                if (particle.y > canvas.height) particle.y = 0;
+            });
+
+            requestAnimationFrame(() => drawParticles(mouseX, mouseY));
+        }
+
+        let mouseX = 0, mouseY = 0;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        drawParticles(mouseX, mouseY);
     </script>
 </body>
 </html>
