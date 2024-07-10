@@ -1,4 +1,4 @@
-yaml
+# Site settings
 title: Benson Basil's Resume
 description: Interactive resume of Benson Basil
 baseurl: ""
@@ -16,5 +16,18 @@ exclude:
   - node_modules
   - vendor
 
-  sass:
+# Sass settings
+sass:
   style: compressed
+
+# Jekyll settings
+lsi: false
+safe: true
+source: .
+incremental: false
+highlighter: rouge
+gist:
+  noscript: false
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
