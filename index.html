@@ -31,6 +31,9 @@
             font-size: 2em;
             border-bottom: 1px solid #233554;
             padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .section {
             margin-bottom: 40px;
@@ -101,7 +104,7 @@
             transition: top .7s;
             z-index: 1000;
             display: flex;
-            justify-content: center; /* Center items horizontally */
+            justify-content: center;
             align-items: center;
             padding: 10px 20px;
         }
@@ -109,20 +112,40 @@
             top: 0;
         }
         #sticky-header .profile-pic {
-            width: 70px;
-            height: 70px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            ali: 0px;
+            margin-right: 20px;
         }
         #sticky-header h1 {
             font-size: 2em;
-            margin: middle;
-            flex-grow: 2;
+            margin: 0;
+            color: #ffffff;
         }
         .map-container {
             width: 100%;
-            height: 300px;
+            height: auto;
             margin-top: 20px;
+        }
+        .job-separator {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #64ffda, transparent);
+            margin: 20px 0;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+        }
+        .contact-left {
+            grid-column: 1 / 2;
+        }
+        .contact-right {
+            grid-column: 2 / 3;
+            text-align: right;
+        }
+        .education-item {
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -202,22 +225,28 @@
 
         <div class="section" id="education">
             <h2>Education</h2>
-            <h3>Bachelor of Software Engineering (Honours)</h3>
-            <p>Deakin University, February 2017 - Present</p>
-            <ul>
-                <li>Relevant coursework: Network engineering, System security, Object-Oriented Design, Software Testing and Debugging</li>
-                <li>Developed strong foundation in programming languages including Python, C, C++, and JavaScript</li>
-                <li>Gained proficiency in tools such as MATLAB, Visual Studio, and AutoCAD</li>
-            </ul>
-            <h3>Victorian Certificate of Education (VCE)</h3>
-            <p>Wellington Secondary College, 2015 - 2016</p>
-            <ul>
-                <li>Completed VCE subjects:</li>
-                <li>Primary Unit: English Language</li>
-                <li>Mathematic Unit: Mathematical Methods</li>
-                <li>Science Unit(s): Physics / Chemistry / Biology</li>
-                <li>Additional Unit: Economics</li>
-            </ul>
+            <div class="education-item">
+                <h3 class="job-title">Bachelor of Software Engineering (Honours)</h3>
+                <p class="company">Deakin University</p>
+                <p class="duration">February 2017 - Present</p>
+                <ul>
+                    <li>Relevant coursework: Network engineering, System security, Object-Oriented Design, Software Testing and Debugging</li>
+                    <li>Developed strong foundation in programming languages including Python, C, C++, and JavaScript</li>
+                    <li>Gained proficiency in tools such as MATLAB, Visual Studio, and AutoCAD</li>
+                </ul>
+            </div>
+            <div class="education-item">
+                <h3 class="job-title">Victorian Certificate of Education (VCE)</h3>
+                <p class="company">Wellington Secondary College</p>
+                <p class="duration">2015 - 2016</p>
+                <ul>
+                    <li>Completed VCE subjects:</li>
+                    <li>Primary Unit: English Language</li>
+                    <li>Mathematic Unit: Mathematical Methods</li>
+                    <li>Science Unit(s): Physics / Chemistry / Biology</li>
+                    <li>Additional Unit: Economics</li>
+                </ul>
+            </div>
         </div>
 
         <div class="section" id="projects">
@@ -252,16 +281,14 @@
 
         <div class="section" id="contact">
             <h2>Contact</h2>
-            <div style="display: flex; align-items: center;">
-                <div class="profile-pic-container" style="width: 100px; height: 100px; margin: auto;">
-                    <img src="https://raw.githubusercontent.com/J-B-Computers/Benson_Basil/main/profile.jpeg" alt="Benson Basil" class="profile-pic">
-                </div>
-                <div>
-                    <h3 style="text-align: left;">BENSON BASIL</h3>
+            <div class="contact-grid">
+                <div class="contact-left">
                     <p>Email: <a href="mailto:x@bensonbasil.com">x@bensonbasil.com</a></p>
                     <p>Phone: <a href="tel:+61410977955">(+61) 410977955</a></p>
-                    <p>Location: <a href="#" id="show-map">Cranbourne, VIC 3977</a></p>
                     <p>GitHub: <a href="https://github.com/bensonbasil" target="_blank">github.com/bensonbasil</a></p>
+                </div>
+                <div class="contact-right">
+                    <p>Location: <a href="#" id="show-map">Cranbourne, VIC 3977</a></p>
                 </div>
             </div>
             <div id="map" class="map-container" style="display: none;"></div>
@@ -276,7 +303,7 @@
         canvas.height = window.innerHeight;
 
         const particles = [];
-        const particleCount = 500;
+        const particleCount = 300;
 
         for (let i = 0; i < particleCount; i++) {
             particles.push({
@@ -284,7 +311,7 @@
                 y: Math.random() * canvas.height,
                 radius: Math.random() * 3 + 1,
                 color: `hsl(${Math.random() * 360}, 50%, 50%)`,
-                speed: Math.random() * 1 + .2,
+                speed: Math.random() * .5 + .1,
                 angle: Math.random() * Math.PI * 2
             });
         }
@@ -312,7 +339,7 @@
                     if (distance < 100) {
                         ctx.beginPath();
                         ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance / 100})`;
-                        ctx.lineWidth = .5;
+                        ctx.lineWidth = .2;
                         ctx.moveTo(particle.x, particle.y);
                         ctx.lineTo(other.x, other.y);
                         ctx.stroke();
