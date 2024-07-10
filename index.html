@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BENSON BASIL - Interactive Resume</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,10 +23,10 @@
         h1, h2, h3 {
             color: #64ffda;
             text-align: center;
+            text-transform: uppercase;
         }
         h1 {
             font-size: 3em;
-            text-transform: uppercase;
         }
         h2 {
             font-size: 2em;
@@ -101,7 +102,7 @@
             left: 0;
             width: 100%;
             background-color: rgba(10, 25, 47, 0.9);
-            transition: top .7s;
+            transition: top 0.7s;
             z-index: 1000;
             display: flex;
             justify-content: center;
@@ -122,30 +123,44 @@
             margin: 0;
             color: #ffffff;
         }
-        .map-container {
-            width: 100%;
-            height: auto;
-            margin-top: 20px;
-        }
         .job-separator {
             height: 2px;
             background: linear-gradient(to right, transparent, #64ffda, transparent);
             margin: 20px 0;
         }
         .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-gap: 20px;
-        }
-        .contact-left {
-            grid-column: 1 / 2;
-        }
-        .contact-right {
-            grid-column: 2 / 3;
-            text-align: right;
-        }
-        .education-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 20px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+        }
+        .contact-item i {
+            margin-right: 10px;
+            color: #64ffda;
+        }
+        .image-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        .image-container img {
+            width: 48%;
+            height: auto;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .image-container img:hover {
+            transform: scale(1.05);
+        }
+        .map-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -153,25 +168,24 @@
     <canvas id="background-animation"></canvas>
     
     <div id="sticky-header">
-        <img src="https://raw.githubusercontent.com/J-B-Computers/Benson_Basil/main/profile.jpeg" alt="Benson Basil" class="profile-pic">
+        <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/MeCasual.jpeg" alt="Benson Basil" class="profile-pic">
         <h1>BENSON BASIL</h1>
-        </div>
     </div>
 
     <div class="container">
         <h1>BENSON BASIL</h1>
         
         <div class="profile-pic-container">
-            <img src="https://raw.githubusercontent.com/J-B-Computers/Benson_Basil/main/profile.jpeg" alt="Benson Basil" class="profile-pic">
+            <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/MeMain.jpeg" alt="Benson Basil" class="profile-pic">
         </div>
 
         <div class="section" id="summary">
-            <h2>Professional Summary</h2>
+            <h2>PROFESSIONAL SUMMARY</h2>
             <p>Highly motivated Software Engineering graduate with a strong foundation in IT infrastructure, project management, and cybersecurity. Experienced in adapting technical solutions for high-profile events and optimizing operational efficiency. Possesses a unique blend of technical acumen and understanding of human psychology, enabling innovative approaches to problem-solving. Passionate about leveraging technology to enhance cybersecurity and contribute to national security initiatives. Demonstrates resilience, adaptability, and a commitment to continuous learning, particularly in emerging technologies like AI and its applications in cybersecurity.</p>
         </div>
 
         <div class="section" id="experience">
-            <h2>Work Experience</h2>
+            <h2>WORK EXPERIENCE</h2>
             <h3 class="job-title">IT Service Officer</h3>
             <p class="company">One World Rental</p>
             <p class="duration">April 2023 - Present</p>
@@ -186,6 +200,8 @@
                 <li>Educated clients on network safety, virus prevention, and proper use of antivirus software</li>
             </ul>
 
+            <div class="job-separator"></div>
+
             <h3 class="job-title">Network and Systems Administrator</h3>
             <p class="company">ARB Corporation Ltd</p>
             <p class="duration">May 2021 - March 2023</p>
@@ -198,6 +214,8 @@
                 <li>Conducted thorough analysis of warehouse operations, creating comprehensive documentation for improved efficiency</li>
             </ul>
 
+            <div class="job-separator"></div>
+
             <h3 class="job-title">ICT Business Lead</h3>
             <p class="company">JB Computers Pty Ltd</p>
             <p class="duration">Jan 2013 - Sep 2016</p>
@@ -209,6 +227,8 @@
                 <li>Performed computer repairs, built custom PCs, and provided technical support to customers</li>
                 <li>Implemented and managed Point of Sale systems and network designs for business clients</li>
             </ul>
+
+            <div class="job-separator"></div>
 
             <h3 class="job-title">Intern</h3>
             <p class="company">Geoscience Australia</p>
@@ -224,7 +244,7 @@
         </div>
 
         <div class="section" id="education">
-            <h2>Education</h2>
+            <h2>EDUCATION</h2>
             <div class="education-item">
                 <h3 class="job-title">Bachelor of Software Engineering (Honours)</h3>
                 <p class="company">Deakin University</p>
@@ -235,6 +255,7 @@
                     <li>Gained proficiency in tools such as MATLAB, Visual Studio, and AutoCAD</li>
                 </ul>
             </div>
+            <div class="job-separator"></div>
             <div class="education-item">
                 <h3 class="job-title">Victorian Certificate of Education (VCE)</h3>
                 <p class="company">Wellington Secondary College</p>
@@ -250,19 +271,23 @@
         </div>
 
         <div class="section" id="projects">
-            <h2>Projects</h2>
-            <h3>Smart Traffic System</h3>
+            <h2>PROJECTS</h2>
+            <h3 class="job-title">Smart Traffic System</h3>
             <p>Developed a smart traffic system using C, C++, and Python. Integrated lights and sensors with a Raspberry Pi to replicate a traffic intersection. Utilized Photon Particle for wireless data transmission, demonstrating skills in embedded systems and IoT.</p>
             
-            <h3>Smart Door Lock System</h3>
+            <div class="job-separator"></div>
+
+            <h3 class="job-title">Smart Door Lock System</h3>
             <p>Designed and implemented a smart door lock system incorporating advanced security features and networking capabilities. Demonstrated deep understanding of security protocols and embedded systems, implementing careful security measures to restrict access and protect sensitive data.</p>
             
-            <h3>Warehouse Inventory Management System</h3>
+            <div class="job-separator"></div>
+            
+            <h3 class="job-title">Warehouse Inventory Management System</h3>
             <p>Created a comprehensive database and management system for warehouse operations at ARB Corporation. The system improved inventory tracking, optimized picking processes, and enhanced overall operational efficiency.</p>
         </div>
 
         <div class="section" id="skills">
-            <h2>Technical Skills</h2>
+            <h2>TECHNICAL SKILLS</h2>
             <ul>
                 <li><span class="skill-category">Programming Languages:</span> JavaScript, Python, C#, C++, C, Bash, PowerShell</li>
                 <li><span class="skill-category">Frameworks and Technologies:</span> React, Next.js, Node.js, .NET, Docker, Kubernetes</li>
@@ -274,116 +299,143 @@
             </ul>
         </div>
 
-        <div class="section" id="personal-growth">
-            <h2>Personal Growth</h2>
-            <p>Successfully managing ADHD and depression has been a transformative journey, turning these challenges into unique strengths. This experience has fostered exceptional resilience, empathy, and an innovative problem-solving approach. The ability to hyperfocus, a characteristic of ADHD, has become a professional asset, particularly useful in complex coding tasks and cybersecurity analysis. Managing depression has cultivated a deep sense of empathy and emotional intelligence, enhancing team collaboration and stakeholder engagement skills. These personal experiences have instilled a relentless drive for improvement and innovation, along with the ability to swiftly recover from setbacks and use them as catalysts for further development. This journey has not only shaped a strong work ethic but also deepened the capacity to empathize and adapt, enriching the approach to cybersecurity with a human-centric perspective.</p>
+        <div class="image-container">
+            <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/CarFront.jpg" alt="Car Front">
+            <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/CarBack.jpg" alt="Car Back">
         </div>
 
+        <div class="section" id="personal">
+            <h2>PERSONAL</h2>
+            <p>I have a deep passion for cars, enjoying both working on them and driving them. My curiosity extends beyond automotive interests, as I strive to "learn a little about a lot of things" to stay informed about the world around me. I'm fascinated by various aspects of world history and human behavior, constantly seeking to expand my knowledge across different scientific disciplines and other facets of life.</p>
+            <p>Physical fitness is an important part of my routine. I regularly go to the gym and enjoy playing badminton and basketball. These activities not only keep me fit but also provide a great way to unwind and socialize.</p>
+            <p>Traveling is another passion of mine. I've had the opportunity to explore several countries, including India, Sri Lanka, Philippines, Vietnam, Thailand, and Indonesia. These experiences have broadened my perspective and deepened my appreciation for diverse cultures and ways of life.</p>
+        </div>
+
+        <div class="section" id="personal-growth">
+            <h2>PERSONAL GROWTH</h2>
+            <p>Successfully managing ADHD and depression has been a transformative journey, turning these challenges into unique strengths. This experience has fostered exceptional resilience, empathy, and an innovative problem-solving approach. The ability to hyperfocus, a characteristic of ADHD, has become a valuable asset in my professional life, particularly for complex tasks requiring intense concentration. Overcoming depression has enhanced my emotional intelligence and ability to connect with others. These experiences have instilled in me a strong drive for continuous improvement and the ability to approach
+        </div>
+        <div class="image-container">
+            <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/MeTravel.jpg" alt="Travel Photo">
+            <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/MeCasual.jpeg" alt="Casual Photo">
+        </div>
+    
         <div class="section" id="contact">
-            <h2>Contact</h2>
+            <h2>CONTACT</h2>
             <div class="contact-grid">
-                <div class="contact-left">
-                    <p>Email: <a href="mailto:x@bensonbasil.com">x@bensonbasil.com</a></p>
-                    <p>Phone: <a href="tel:+61410977955">(+61) 410977955</a></p>
-                    <p>GitHub: <a href="https://github.com/bensonbasil" target="_blank">github.com/bensonbasil</a></p>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:x@bensonbasil.com">x@bensonbasil.com</a>
                 </div>
-                <div class="contact-right">
-                    <p>Location: <a href="#" id="show-map">Cranbourne, VIC 3977</a></p>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+61410977955">(+61) 410977955</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <a href="https://github.com/bensonbasil" target="_blank">github.com/bensonbasil</a>
                 </div>
             </div>
-            <div id="map" class="map-container" style="display: none;"></div>
+            <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Location.png" alt="Location Map" class="map-image">
         </div>
-    </div>
-
-    <script>
-        // Background animation script
-        const canvas = document.getElementById('background-animation');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const particles = [];
-        const particleCount = 300;
-
-        for (let i = 0; i < particleCount; i++) {
-            particles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                radius: Math.random() * 3 + 1,
-                color: `hsl(${Math.random() * 360}, 50%, 50%)`,
-                speed: Math.random() * .5 + .1,
-                angle: Math.random() * Math.PI * 2
-            });
-        }
-
-        function drawParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach(particle => {
-                ctx.beginPath();
-                ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-                ctx.fillStyle = particle.color;
-                ctx.fill();
-
-                particle.x += Math.cos(particle.angle) * particle.speed;
-                particle.y += Math.sin(particle.angle) * particle.speed;
-
-                if (particle.x < 0 || particle.x > canvas.width) particle.angle = Math.PI - particle.angle;
-                if (particle.y < 0 || particle.y > canvas.height) particle.angle = -particle.angle;
-
-                particles.forEach(other => {
-                    const dx = particle.x - other.x;
-                    const dy = particle.y - other.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < 100) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance / 100})`;
-                        ctx.lineWidth = .2;
-                        ctx.moveTo(particle.x, particle.y);
-                        ctx.lineTo(other.x, other.y);
-                        ctx.stroke();
-                    }
-                });
-            });
-
-            requestAnimationFrame(drawParticles);
-        }
-
-        drawParticles();
-
-        window.addEventListener('resize', () => {
+        <script>
+            const canvas = document.getElementById('background-animation');
+            const ctx = canvas.getContext('2d');
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-        });
-
-        // Sticky header script
-        window.onscroll = function() {
-            var header = document.getElementById("sticky-header");
-            if (window.pageYOffset > 100) {
-                header.classList.add("visible");
-            } else {
-                header.classList.remove("visible");
+        
+            let particlesArray = [];
+            let hue = 0;
+        
+            const mouse = {
+                x: undefined,
+                y: undefined,
             }
-        };
-
-        // Map display script
-        document.getElementById('show-map').addEventListener('click', function(e) {
-            e.preventDefault();
-            var mapContainer = document.getElementById('map');
-            if (mapContainer.style.display === 'none') {
-                mapContainer.style.display = 'block';
-                mapContainer.innerHTML = '<img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Location.png" alt="Cranbourne Location" style="width:100%; height:300%; object-fit:cover;">';
-            } else {
-                mapContainer.style.display = 'none';
+        
+            canvas.addEventListener('mousemove', (event) => {
+                mouse.x = event.x;
+                mouse.y = event.y;
+                for (let i = 0; i < 5; i++) {
+                    particlesArray.push(new Particle());
+                }
+            });
+        
+            class Particle {
+                constructor() {
+                    this.x = mouse.x;
+                    this.y = mouse.y;
+                    this.size = Math.random() * 15 + 1;
+                    this.speedX = Math.random() * 3 - 1.5;
+                    this.speedY = Math.random() * 3 - 1.5;
+                    this.color = `hsl(${hue}, 100%, 50%)`;
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    if (this.size > 0.2) this.size -= 0.1;
+                }
+                draw() {
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
             }
-        });
-
-        // Update profile picture URLs
-        const profilePics = document.querySelectorAll('.profile-pic');
-        profilePics.forEach(pic => {
-            pic.src = 'https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/profile.jpeg';
-        });
-    </script>
-</body>
-</html>
+        
+            function handleParticles() {
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
+                    particlesArray[i].draw();
+                    for (let j = i; j < particlesArray.length; j++) {
+                        const dx = particlesArray[i].x - particlesArray[j].x;
+                        const dy = particlesArray[i].y - particlesArray[j].y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        if (distance < 100) {
+                            ctx.beginPath();
+                            ctx.strokeStyle = particlesArray[i].color;
+                            ctx.lineWidth = 0.2;
+                            ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                            ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+                            ctx.stroke();
+                            ctx.closePath();
+                        }
+                    }
+                    if (particlesArray[i].size <= 0.3) {
+                        particlesArray.splice(i, 1);
+                        i--;
+                    }
+                }
+            }
+        
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                handleParticles();
+                hue += 2;
+                requestAnimationFrame(animate);
+            }
+        
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        
+            animate();
+        
+            // Sticky header script
+            window.onscroll = function() {
+                var header = document.getElementById("sticky-header");
+                if (window.pageYOffset > 100) {
+                    header.classList.add("visible");
+                } else {
+                    header.classList.remove("visible");
+                }
+            };
+        
+            // Update profile picture URLs
+            const profilePics = document.querySelectorAll('.profile-pic');
+            profilePics.forEach(pic => {
+                pic.src = 'https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/MeMain.jpeg';
+            });
+        </script>
+        </body>
+        </html>
