@@ -1,0 +1,20 @@
+yaml
+title: Benson Basil's Resume
+description: Interactive resume of Benson Basil
+baseurl: ""
+url: "https://bensonbasil.com"
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-feed
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+  sass:
+  style: compressed
