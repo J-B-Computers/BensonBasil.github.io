@@ -9,67 +9,55 @@
 <body>
     <canvas id="background-animation"></canvas>
     
-    <div id="header-container"></div>
+    <header id="sticky-header"></header>
 
-    <div class="container">
+    <main class="container">
         <h1>BENSON BASIL</h1>
 
-        <div class="profile-pic-container">
+        <section class="profile-pic-container">
             <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/PersonalPictures/MeMain.jpeg" alt="Benson Basil" class="profile-pic">
-        </div>
+        </section>
 
-        <div id="summary-container"></div>
-
-        <div id="experience-container"></div>
-
-        <div id="education-container"></div>
-
-        <div id="skills-container"></div>
-
-        <div id="projects-container"></div>
+        <section id="summary" class="section"></section>
+        <section id="experience" class="section"></section>
+        <section id="education" class="section"></section>
+        <section id="skills" class="section"></section>
+        <section id="projects" class="section"></section>
 
         <div class="image-container">
             <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/PersonalPictures/MeTravel.jpg" alt="Travel Photo">
             <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/PersonalPictures/MeCasual.jpg" alt="Casual Photo">
         </div>
 
-        <div id="personal-container"></div>
+        <section id="personal" class="section"></section>
 
         <div class="image-container">
             <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/Cars/CarFront1.jpg" alt="Car Front">
             <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/Cars/CarRear2.jpg" alt="Car Back">
         </div>
 
-        <div id="contact-container"></div>
-    </div>
+        <section id="contact" class="section"></section>
+    </main>
 
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 Benson Basil. All rights reserved.</p>
+            <p>Logos used under respective licenses.</p>
+            <p>GitHub logo used under <a href="https://github.com/logos">GitHub's logo guidelines</a>.</p>
+            <p>Hosted on <a href="https://pages.github.com/">GitHub Pages</a>.</p>
+            <p>Domain provided by <a href="https://www.godaddy.com/">GoDaddy</a>.</p>
+        </div>
+        <nav class="footer-nav">
+            <a href="#summary">Summary</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#personal">Personal</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </footer>
 
     <script src="script.js"></script>
-    <script>
-    src="script.js";
-        // Load content
-        fetch('header.html').then(response => response.text()).then(data => document.getElementById('header-container').innerHTML = data);
-        fetch('summary.html').then(response => response.text()).then(data => document.getElementById('summary-container').innerHTML = data);
-        fetch('experience.html').then(response => response.text()).then(data => document.getElementById('experience-container').innerHTML = data);
-        fetch('education.html').then(response => response.text()).then(data => document.getElementById('education-container').innerHTML = data);
-        fetch('skills.html').then(response => response.text()).then(data => document.getElementById('skills-container').innerHTML = data);
-        fetch('projects.html').then(response => response.text()).then(data => document.getElementById('projects-container').innerHTML = data);
-        fetch('personal.html').then(response => response.text()).then(data => document.getElementById('personal-container').innerHTML = data);
-        fetch('contact.html').then(response => response.text()).then(data => document.getElementById('contact-container').innerHTML = data);
-     
-        fetch('header.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('header-container').innerHTML = data;
-        });
-
-    </script>
-
 </body>
 </html>
-
-
-    
-
-
-    

@@ -1,52 +1,63 @@
-// Space-themed background animation
+// Background Animation
 const canvas = document.getElementById('background-animation');
 const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
 
 const celestialObjects = [];
 const starCount = 200;
 const planetCount = 5;
-const galaxyCount = 3;
+const galaxyCount = 10;
 
 let mouse = { x: null, y: null, radius: 50 };
 
-// Create stars
-for (let i = 0; i < starCount; i++) {
-    celestialObjects.push({
-        type: 'star',
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 1.5,
-        color: `rgba(255, 255, 255, ${Math.random() * 0.8 + 0.2})`,
-        velocity: { x: (Math.random() - 0.5) * 0.5, y: (Math.random() - 0.5) * 0.5 }
-    });
+// Create stars, planets, and galaxies
+function createCelestialObjects() {
+    // Create stars
+    for (let i = 0; i < starCount; i++) {
+        celestialObjects.push({
+            type: 'star',
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 1.5,
+            color: `rgba(255, 255, 255, ${Math.random() * 0.8 + 0.2})`,
+            velocity: { x: (Math.random() - 0.5) * 0.5, y: (Math.random() - 0.5) * 0.5 }
+        });
+    }
+
+    // Create planets
+    for (let i = 0; i < planetCount; i++) {
+        celestialObjects.push({
+            type: 'planet',
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 20 + 10,
+            color: `hsl(${Math.random() * 360}, 50%, 50%)`,
+            velocity: { x: (Math.random() - 0.5) * 0.2, y: (Math.random() - 0.5) * 0.2 }
+        });
+    }
+
+    // Create galaxies
+    for (let i = 0; i < galaxyCount; i++) {
+        celestialObjects.push({
+            type: 'galaxy',
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 100 + 50,
+            color: `hsla(${Math.random() * 360}, 70%, 50%, 0.3)`,
+            rotation: Math.random() * Math.PI * 2,
+            velocity: { x: (Math.random() - 0.5) * 0.1, y: (Math.random() - 0.5) * 0.1 }
+        });
+    }
 }
 
-// Create planets
-for (let i = 0; i < planetCount; i++) {
-    celestialObjects.push({
-        type: 'planet',
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 20 + 10,
-        color: `hsl(${Math.random() * 360}, 50%, 50%)`,
-        velocity: { x: (Math.random() - 0.5) * 0.2, y: (Math.random() - 0.5) * 0.2 }
-    });
-}
-
-// Create galaxies
-for (let i = 0; i < galaxyCount; i++) {
-    celestialObjects.push({
-        type: 'galaxy',
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 100 + 50,
-        color: `hsla(${Math.random() * 360}, 70%, 50%, 0.3)`,
-        rotation: Math.random() * Math.PI * 2,
-        velocity: { x: (Math.random() - 0.5) * 0.1, y: (Math.random() - 0.5) * 0.1 }
-    });
-}
+createCelestialObjects();
 
 function drawSpaceBackground() {
     ctx.fillStyle = '#0a192f';
@@ -125,62 +136,81 @@ window.addEventListener('mousemove', (event) => {
     mouse.y = event.y;
 });
 
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
+// Sticky Header
+const header = document.getElementById('sticky-header');
+const headerContent = header.querySelector('.header-content');
 
-// Sticky header script
-window.onscroll = function() {
-    var header = document.getElementById("sticky-header");
-    if (window.pageYOffset > 100) {
-        header.classList.add("visible");
-    } else {
-        header.classList.remove("visible");
-    }
+fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+        header.innerHTML = data;
+        initializeNavigation();
+    });
+
+function initializeNavigation() {
+    const navItems = document.querySelectorAll('#sticky-header nav ul li a');
+    const currentSectionDisplay = document.getElementById('current-section');
+    const sections = document.querySelectorAll('.section');
+
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 100) {
+            header.classList.add('visible');
+        } else {
+            header.classList.remove('visible');
+        }
+
+        let currentSection = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= sectionTop - 60) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+
+        navItems.forEach(item => {
+            item.classList.remove('active-section');
+            if (item.getAttribute('href').slice(1) === currentSection) {
+                item.classList.add('active-section');
+            }
+        });
+
+        if (currentSection) {
+            currentSectionDisplay.textContent = currentSection.charAt(0).toUpperCase() + currentSection.slice(1);
+            currentSectionDisplay.style.opacity = 1;
+        } else {
+            currentSectionDisplay.style.opacity = 0;
+        }
+    });
+
+    // Mobile navigation
+    currentSectionDisplay.addEventListener('click', () => {
+        header.classList.toggle('nav-open');
+    });
 }
 
-// Active section tracking
-window.addEventListener('scroll', function() {
-    const sections = document.querySelectorAll('.section');
-    const navItems = document.querySelectorAll('#sticky-header nav ul li a');
-    
-    let currentSection = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= sectionTop - 60) {
-            currentSection = section.getAttribute('id');
-        }
-    });
-
-    navItems.forEach(item => {
-        item.classList.remove('active-section');
-        if (item.getAttribute('href').slice(1) === currentSection) {
-            item.classList.add('active-section');
-        }
-    });
-
-    const currentSectionElement = document.getElementById('current-section');
-    if (currentSection) {
-        currentSectionElement.textContent = currentSection.charAt(0).toUpperCase() + currentSection.slice(1);
-        currentSectionElement.style.opacity = 1;
-    } else {
-        currentSectionElement.style.opacity = 0;
+// Download resume functionality
+document.addEventListener('click', function(e) {
+    if (e.target && e.target.id === 'download-resume') {
+        e.preventDefault();
+        
+        var fileUrl = 'https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Files/resume.pdf';
+        
+        var link = document.createElement('a');
+        link.href = fileUrl;
+        link.download = 'Benson_Basil_Resume.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
 });
 
-// Download resume functionality
-document.getElementById('download-resume').addEventListener('click', function(e) {
-    e.preventDefault();
-    
-    var fileUrl = 'https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Files/resume.pdf';
-    
-    var link = document.createElement('a');
-    link.href = fileUrl;
-    link.download = 'Benson_Basil_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+// Load content for each section
+const sections = ['summary', 'experience', 'education', 'skills', 'projects', 'personal', 'contact'];
+sections.forEach(section => {
+    fetch(`${section}.html`)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById(section).innerHTML = data;
+        });
 });
