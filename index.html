@@ -23,8 +23,8 @@
         <div id="summary-container"></div>
         <div id="experience-container"></div>
         <div id="education-container"></div>
-        <div id="projects-container"></div>
         <div id="skills-container"></div>
+        <div id="projects-container"></div>
                  <!-- PERSONAL PICTURES  -->
     
                  <div class="image-container">
@@ -47,8 +47,8 @@
         fetch('summary.html').then(response => response.text()).then(data => document.getElementById('summary-container').innerHTML = data);
         fetch('experience.html').then(response => response.text()).then(data => document.getElementById('experience-container').innerHTML = data);
         fetch('education.html').then(response => response.text()).then(data => document.getElementById('education-container').innerHTML = data);
-        fetch('projects.html').then(response => response.text()).then(data => document.getElementById('projects-container').innerHTML = data);
         fetch('skills.html').then(response => response.text()).then(data => document.getElementById('skills-container').innerHTML = data);
+        fetch('projects.html').then(response => response.text()).then(data => document.getElementById('projects-container').innerHTML = data);
         fetch('personal.html').then(response => response.text()).then(data => document.getElementById('personal-container').innerHTML = data);
         fetch('contact.html').then(response => response.text()).then(data => document.getElementById('contact-container').innerHTML = data);
     </script>
