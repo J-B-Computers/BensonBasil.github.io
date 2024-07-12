@@ -131,3 +131,17 @@ window.addEventListener('scroll', function() {
         currentSectionElement.style.opacity = 0;
     }
 });
+
+document.getElementById('download-resume').addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // Replace 'resume.pdf' with the actual name of your PDF file
+    var fileUrl = 'https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Files/resume.pdf';
+    
+    var link = document.createElement('a');
+    link.href = fileUrl;
+    link.download = 'Benson_Basil_Resume.pdf'; // The name the file will be downloaded as
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+});
