@@ -9,201 +9,53 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- Background Animation Canvas -->
     <canvas id="background-animation"></canvas>
     
-    <!-- Sticky Header -->
-    <div id="sticky-header">
-        <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/Logo/Logo.jpg" alt="Benson Basil" class="profile-pic">
-        <h1>BENSON</h1>
-    </div>
+    <div id="header-container"></div>
 
-    <!-- Main Content Container -->
     <div class="container">
         <h1>BENSON BASIL</h1>
         
-        <!-- Profile Picture -->
         <div class="profile-pic-container">
             <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/PersonalPictures/MeMain.jpeg" alt="Benson Basil" class="profile-pic">
         </div>
 
-        <!-- Professional Summary Section -->
-        <div class="section" id="summary">
-            <h2>PROFESSIONAL SUMMARY</h2>
-            <p>Highly motivated Software Engineering graduate with a strong foundation in IT infrastructure, project management, and cybersecurity. Experienced in adapting technical solutions for high-profile events and optimizing operational efficiency. Possesses a unique blend of technical acumen and understanding of human psychology, enabling innovative approaches to problem-solving. Passionate about leveraging technology to enhance cybersecurity and contribute to national security initiatives. Demonstrates resilience, adaptability, and a commitment to continuous learning, particularly in emerging technologies like AI and its applications in cybersecurity.</p>
-        </div>
-
-        <!-- Work Experience Section -->
-        <div class="section" id="experience">
-            <h2>WORK EXPERIENCE</h2>
-            
-            <!-- Job 1 -->
-            <h3 class="job-title">IT Service Officer</h3>
-            <p class="company">One World Rental</p>
-            <p class="duration">April 2023 - Present</p>
-            <ul>
-                <li>Led IT infrastructure management for high-profile events including Adelaide 500 V8 Supercars and Royal Melbourne Show</li>
-                <li>Orchestrated the installation and management of over 120 Full Square systems and 10 Starlink connections</li>
-                <li>Implemented robust security protocols and strict access controls for critical financial systems</li>
-                <li>Coordinated with internal teams and external contractors to ensure flawless event execution</li>
-                <li>Developed and maintained client-specific security protocols, assessing vulnerabilities and implementing protective measures</li>
-                <li>Managed equipment rentals, promptly reporting damages and documenting incidents for accountability</li>
-                <li>Configured and maintained complex network infrastructures, including mesh systems for extended range</li>
-                <li>Educated clients on network safety, virus prevention, and proper use of antivirus software</li>
-            </ul>
-
-            <div class="job-separator"></div>
-
-            <!-- Job 2 -->
-            <h3 class="job-title">Network and Systems Administrator</h3>
-            <p class="company">ARB Corporation Ltd</p>
-            <p class="duration">May 2021 - March 2023</p>
-            <ul>
-                <li>Spearheaded a project to enhance operational efficiency, significantly improving the flow of goods and warehouse management</li>
-                <li>Designed and implemented a new inventory system that optimized tracking, picking, and restocking processes</li>
-                <li>Managed a team of 3 staff members, fostering a collaborative and productive work environment</li>
-                <li>Administered networks for automated manufacturing and distribution systems, including CAD design and SAP ERP</li>
-                <li>Integrated financial and HR systems to streamline operations</li>
-                <li>Conducted thorough analysis of warehouse operations, creating comprehensive documentation for improved efficiency</li>
-            </ul>
-
-            <div class="job-separator"></div>
-
-            <!-- Job 3 -->
-            <h3 class="job-title">ICT Business Lead</h3>
-            <p class="company">JB Computers Pty Ltd</p>
-            <p class="duration">Jan 2013 - Sep 2016</p>
-            <ul>
-                <li>Managed complete shop operations, focusing on secure and efficient business activities</li>
-                <li>Led the design and implementation of e-commerce websites, enhancing customer engagement</li>
-                <li>Ensured legal compliance and proper documentation for all business operations</li>
-                <li>Developed client-specific security protocols and provided best practices for network integrity</li>
-                <li>Performed computer repairs, built custom PCs, and provided technical support to customers</li>
-                <li>Implemented and managed Point of Sale systems and network designs for business clients</li>
-            </ul>
-
-            <div class="job-separator"></div>
-
-            <!-- Job 4 -->
-            <h3 class="job-title">Intern</h3>
-            <p class="company">Geoscience Australia</p>
-            <p class="duration">2016 (Duration not specified)</p>
-            <ul>
-                <li>Gained valuable experience in federal public service operations</li>
-                <li>Conducted chemical analyses and identified safe zones for mining operations</li>
-                <li>Participated in remote satellite operations from Canberra</li>
-                <li>Handled sensitive data, ensuring its security and integrity</li>
-                <li>Contributed to responses for natural phenomena like tsunamis and earthquakes</li>
-                <li>Developed skills in precise scientific testing and rigorous risk assessment</li>
-            </ul>
-        </div>
-
-        <!-- Education Section -->
-        <div class="section" id="education">
-            <h2>EDUCATION</h2>
-            <div class="education-item">
-                <h3 class="job-title">Bachelor of Software Engineering (Honours)</h3>
-                <p class="company">Deakin University</p>
-                <p class="duration">February 2017 - Present</p>
-                <ul>
-                    <li>Relevant coursework: Network engineering, System security, Object-Oriented Design, Software Testing and Debugging</li>
-                    <li>Developed strong foundation in programming languages including Python, C, C++, and JavaScript</li>
-                    <li>Gained proficiency in tools such as MATLAB, Visual Studio, and AutoCAD</li>
-                </ul>
-            </div>
-            <div class="job-separator"></div>
-            <div class="education-item">
-                <h3 class="job-title">Victorian Certificate of Education (VCE)</h3>
-                <p class="company">Wellington Secondary College</p>
-                <p class="duration">2015 - 2016</p>
-                <ul>
-                    <li>Completed VCE subjects:</li>
-                    <li>Primary Unit: English Language</li>
-                    <li>Mathematic Unit: Mathematical Methods</li>
-                    <li>Science Unit(s): Physics / Chemistry / Biology</li>
-                    <li>Additional Unit: Economics</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Projects Section -->
-        <div class="section" id="projects">
-            <h2>PROJECTS</h2>
-            <h3 class="job-title">Smart Traffic System</h3>
-            <p>Developed a smart traffic system using C, C++, and Python. Integrated lights and sensors with a Raspberry Pi to replicate a traffic intersection. Utilized Photon Particle for wireless data transmission, demonstrating skills in embedded systems and IoT.</p>
-            
-            <div class="job-separator"></div>
-
-            <h3 class="job-title">Smart Door Lock System</h3>
-            <p>Designed and implemented a smart door lock system incorporating advanced security features and networking capabilities. Demonstrated deep understanding of security protocols and embedded systems, implementing careful security measures to restrict access and protect sensitive data.</p>
-            
-            <div class="job-separator"></div>
-            
-            <h3 class="job-title">Warehouse Inventory Management System</h3>
-            <p>Created a comprehensive database and management system for warehouse operations at ARB Corporation. The system improved inventory tracking, optimized picking processes, and enhanced overall operational efficiency.</p>
-        </div>
-
-        <!-- Skills Section -->
-        <div class="section" id="skills">
-            <h2>TECHNICAL SKILLS</h2>
-            <ul>
-                <li><span class="skill-category">Programming Languages:</span> JavaScript, Python, C#, C++, C, Bash, PowerShell</li>
-                <li><span class="skill-category">Frameworks and Technologies:</span> React, Next.js, Node.js, .NET, Docker, Kubernetes</li>
-                <li><span class="skill-category">Cloud Platforms:</span> Azure, AWS, Google Cloud Platform</li>
-                <li><span class="skill-category">Tools and Software:</span> GitHub, Jenkins, Linux, SQL, MATLAB, Visual Studio, AutoDesk, Power BI, SAP ERP, CRM systems</li>
-                <li><span class="skill-category">Networking:</span> LAN/WAN configuration, Starlink systems, Mesh networks</li>
-                <li><span class="skill-category">Security:</span> Access control systems, Network security protocols, Cybersecurity best practices</li>
-                <li><span class="skill-category">Hardware:</span> PC building and repair, Server management</li>
-            </ul>
-        </div>
-
-        <!-- Car Images -->
-        <div class="image-container">
-            <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/Cars/CarFront1.jpg" alt="Car Front">
-            <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/Cars/CarRear2.jpg" alt="Car Back">
-        </div>
-
-        <!-- Personal Section -->
-        <div class="section" id="personal">
-            <h2>PERSONAL</h2>
-            <p>I have a deep passion for cars, enjoying both working on them and driving them. My curiosity extends beyond automotive interests, as I strive to "learn a little about a lot of things" to stay informed about theworld around me. I'm fascinated by various aspects of world history and human behavior, constantly seeking to expand my knowledge across different scientific disciplines and other facets of life.</p>
-            <p>Physical fitness is an important part of my routine. I regularly go to the gym and enjoy playing badminton and basketball. These activities not only keep me fit but also provide a great way to unwind and socialize.</p>
-            <p>Traveling is another passion of mine. I've had the opportunity to explore several countries, including India, Sri Lanka, Philippines, Vietnam, Thailand, and Indonesia. These experiences have broadened my perspective and deepened my appreciation for diverse cultures and ways of life.</p>
-        </div>
+        <div id="summary-container"></div>
+        <div id="experience-container"></div>
+        <div id="education-container"></div>
+        <div id="projects-container"></div>
+        <div id="skills-container"></div>
+                 <!-- PERSONAL PICTURES  -->
     
-        <div class="image-container">
-            <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/PersonalPictures/MeTravel.jpg" alt="Travel Photo">
-            <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/PersonalPictures/MeCasual.jpg" alt="Casual Photo">
-        </div>
-    
-        <div class="section" id="contact">
-            <h2>CONTACT</h2>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <div class="icon-container">
-                        <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/LogoEmail/EmailColour.png" alt="Email" class="contact-icon idle">
-                        <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/LogoEmail/EmailBlack.png" alt="Email" class="contact-icon active">
-                    </div>
-                    <a href="mailto:x@bensonbasil.com">x@bensonbasil.com</a>
+                 <div class="image-container">
+                    <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/PersonalPictures/MeTravel.jpg" alt="Travel Photo">
+                    <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/PersonalPictures/MeCasual.jpg" alt="Casual Photo">
                 </div>
-                <div class="contact-item">
-                    <div class="icon-container-git">
-                        <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/LogoGitHub/github-mark-white.png" alt="GitHub" class="contact-icon idle">
-                        <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/LogoGitHub/github-mark.png" alt="GitHub" class="contact-icon active">
-                    </div>
-                    <a href="https://github.com/bensonbasil" target="_blank">github.com/bensonbasil</a>
-                </div>
-                <div class="contact-item">
-                    <div class="icon-container">
-                        <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/LogoPhone/Call_Idle.png" alt="Phone" class="contact-icon idle">
-                        <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/LogoPhone/Call_Hover.png" alt="Phone" class="contact-icon active">
-                    </div>
-                    <a href="tel:+61410977955">(+61) 410977955</a>
-                </div>
+        <div id="personal-container"></div>
+            <!-- CAR IMAGES -->
+
+            <div class="image-container">
+                <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/Cars/CarFront1.jpg" alt="Car Front">
+                <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/Cars/CarRear2.jpg" alt="Car Back">
             </div>
-            <p class="location">CRANBOURNE, 3977</p>
-            <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/Location.png" alt="Location Map" class="map-image">
-        </div>
-        <script src="script.js" defer></script>
-    </body>
+        <div id="contact-container"></div>
+    </div>
+
+    <script>
+        // Load content
+        fetch('header.html').then(response => response.text()).then(data => document.getElementById('header-container').innerHTML = data);
+        fetch('summary.html').then(response => response.text()).then(data => document.getElementById('summary-container').innerHTML = data);
+        fetch('experience.html').then(response => response.text()).then(data => document.getElementById('experience-container').innerHTML = data);
+        fetch('education.html').then(response => response.text()).then(data => document.getElementById('education-container').innerHTML = data);
+        fetch('projects.html').then(response => response.text()).then(data => document.getElementById('projects-container').innerHTML = data);
+        fetch('skills.html').then(response => response.text()).then(data => document.getElementById('skills-container').innerHTML = data);
+        fetch('personal.html').then(response => response.text()).then(data => document.getElementById('personal-container').innerHTML = data);
+        fetch('contact.html').then(response => response.text()).then(data => document.getElementById('contact-container').innerHTML = data);
+    </script>
+</body>
 </html>
+
+    
+
+
+    
