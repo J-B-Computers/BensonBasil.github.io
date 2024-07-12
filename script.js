@@ -214,3 +214,14 @@ sections.forEach(section => {
             document.getElementById(section).innerHTML = data;
         });
 });
+
+document.querySelector('.nav-toggle').addEventListener('click', function() {
+    document.querySelector('.header-content').classList.toggle('nav-open');
+});
+
+document.querySelector('#sticky-header .profile-pic').addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
