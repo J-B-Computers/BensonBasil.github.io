@@ -96,3 +96,38 @@ window.onscroll = function() {
         header.classList.remove("visible");
     }
 }
+
+// Add this to your existing script
+window.addEventListener('scroll', function() {
+    const sections = document.querySelectorAll('.section');
+    const navItems = document.querySelectorAll('#sticky-header nav ul li a');
+    
+    let currentSection = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - 60) {
+            currentSection = section.getAttribute('id');
+        }
+    });
+
+    navItems.forEach(item => {
+        item.classList.remove('active-section');
+        if (item.getAttribute('href').slice(1) === currentSection) {
+            item.classList.add('active-section');
+        }
+    });
+});
+
+window.addEventListener('scroll', function() {
+    // ... existing scroll code ...
+
+    const currentSectionElement = document.getElementById('current-section');
+    if (currentSection) {
+        currentSectionElement.textContent = currentSection.charAt(0).toUpperCase() + currentSection.slice(1);
+        currentSectionElement.style.opacity = 1;
+    } else {
+        currentSectionElement.style.opacity = 0;
+    }
+});

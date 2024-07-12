@@ -201,3 +201,44 @@ li { margin-bottom: 10px; }
     object-fit: contain;
     margin-top: 20px;
 }
+
+/* Add to your existing styles */
+#sticky-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+#sticky-header nav ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#sticky-header nav ul li {
+    margin-left: 20px;
+}
+
+#sticky-header nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#sticky-header nav ul li a:hover {
+    color: #64ffda;
+}
+
+.active-section {
+    color: #64ffda !important;
+}
+#current-section {
+    position: absolute;
+    right: 20px;
+    font-size: 1.2em;
+    color: #64ffda;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
