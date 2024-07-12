@@ -43,8 +43,9 @@
         <div id="contact-container"></div>
     </div>
 
-    <script>
 
+    <script src="script.js"></script>
+    <script>
     src="script.js";
         // Load content
         fetch('header.html').then(response => response.text()).then(data => document.getElementById('header-container').innerHTML = data);
@@ -55,6 +56,13 @@
         fetch('projects.html').then(response => response.text()).then(data => document.getElementById('projects-container').innerHTML = data);
         fetch('personal.html').then(response => response.text()).then(data => document.getElementById('personal-container').innerHTML = data);
         fetch('contact.html').then(response => response.text()).then(data => document.getElementById('contact-container').innerHTML = data);
+     
+        fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header-container').innerHTML = data;
+        });
+
     </script>
 
 </body>

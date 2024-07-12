@@ -299,3 +299,13 @@ li { margin-bottom: 10px; }
         margin-bottom: 20px;
     }
 }
+#sticky-header .profile-pic {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    transition: transform 0.3s ease;
+}
+
+#sticky-header .profile-pic:hover {
+    transform: scale(1.1);
+}
