@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Benson Basil - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Benson Basil</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/Logo/Logo.jpg" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="styles.css"> --> 
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/custom.css">
 </head>
 <body>
-    <canvas id="background-effect"></canvas>
+    <canvas id="background-animation"></canvas>
+    
     <header id="sticky-header"></header>
 
     <main class="container">
@@ -16,14 +21,13 @@
         <section class="profile-pic-container">
             <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/PersonalPictures/MeMain.jpeg" alt="Benson Basil" class="profile-pic">
         </section>
-            
+
         <section id="summary" class="summary"></section>
         <section id="experience" class="experience"></section>
         <section id="education" class="education"></section>
         <section id="skills" class="skills"></section>
         <section id="projects" class="projects"></section>
 
-    
         <div class="image-container">
             <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/PersonalPictures/MeTravel.jpg" alt="Travel Photo">
             <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/PersonalPictures/MeCasual.jpg" alt="Casual Photo">
@@ -37,6 +41,7 @@
         </div>
 
         <section id="contact" class="contact"></section>
+        
     </main>
 
     <footer>
@@ -54,6 +59,12 @@
         </nav>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script>--> 
+    <script src="scripts/background.js"></script>
+    <script src="scripts/primary.js"></script>
+    <script src="scripts/secondary.js"></script>
+    <script src="scripts/loadcontent.js"></script>
 </body>
 </html>
+
+
