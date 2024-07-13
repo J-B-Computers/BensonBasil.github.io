@@ -50,3 +50,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     updateCurrentSection();
 });
+
+//Left Navigation Settings
+document.addEventListener('DOMContentLoaded', function() {
+    const nav = document.getElementById('left-nav');
+    const summarySection = document.getElementById('summary');
+  
+    window.addEventListener('scroll', function() {
+      if (window.scrollY >= summarySection.offsetTop) {
+        nav.classList.add('visible');
+      } else {
+        nav.classList.remove('visible');
+      }
+    });
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+    const logoLink = document.querySelector('#left-nav .nav-logo');
+    
+    logoLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  });
