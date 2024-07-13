@@ -1,52 +1,52 @@
-// Sticky Header
-const header = document.getElementById('sticky-header');
-const headerContent = header.querySelector('.header-content');
+document.addEventListener('DOMContentLoaded', function() {
+    const header = document.getElementById('sticky-header');
+    const nav = header.querySelector('.main-nav');
+    const currentSection = document.getElementById('current-section');
+    const sections = document.querySelectorAll('main section');
+    const navToggle = document.createElement('button');
+    navToggle.className = 'nav-toggle';
+    navToggle.textContent = 'Menu';
+    header.insertBefore(navToggle, nav);
 
-fetch('header.html')
-    .then(response => response.text())
-    .then(data => {
-        header.innerHTML = data;
-        initializeNavigation();
-    });
-
-function initializeNavigation() {
-    const navItems = document.querySelectorAll('#sticky-header nav ul li a');
-    const currentSectionDisplay = document.getElementById('current-section');
-    const sections = document.querySelectorAll('.section');
-
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 100) {
-            header.classList.add('visible');
-        } else {
-            header.classList.remove('visible');
-        }
-
-        let currentSection = '';
+    function updateCurrentSection() {
+        let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
-            if (pageYOffset >= sectionTop - 60) {
-                currentSection = section.getAttribute('id');
+            if (window.pageYOffset >= sectionTop - 50) {
+                current = section.getAttribute('id');
             }
         });
+        currentSection.textContent = current;
+    }
 
-        navItems.forEach(item => {
-            item.classList.remove('active-section');
-            if (item.getAttribute('href').slice(1) === currentSection) {
-                item.classList.add('active-section');
+    function toggleMobileNav() {
+        header.classList.toggle('nav-open');
+    }
+
+    window.addEventListener('scroll', function() {
+        header.classList.toggle('sticky', window.scrollY > 0);
+        updateCurrentSection();
+    });
+
+    nav.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+            e.preventDefault();
+            const targetId = e.target.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            window.scrollTo({
+                top: targetSection.offsetTop,
+                behavior: 'smooth'
+            });
+            if (header.classList.contains('nav-open')) {
+                toggleMobileNav();
             }
-        });
-
-        if (currentSection) {
-            currentSectionDisplay.textContent = currentSection.charAt(0).toUpperCase() + currentSection.slice(1);
-            currentSectionDisplay.style.opacity = 1;
-        } else {
-            currentSectionDisplay.style.opacity = 0;
         }
     });
 
-    // Mobile navigation
-    currentSectionDisplay.addEventListener('click', () => {
-        header.classList.toggle('nav-open');
-    });
-}
+    navToggle.addEventListener('click', toggleMobileNav);
+
+    currentSection.addEventListener('click', toggleMobileNav);
+
+    updateCurrentSection();
+});

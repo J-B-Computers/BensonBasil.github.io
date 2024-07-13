@@ -170,3 +170,29 @@ footer {
         height: 200px;
     }
 }
+
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+        /* Style your button as needed */
+    }
+
+    .main-nav {
+        display: none;
+    }
+
+    .nav-open .main-nav {
+        display: block;
+        /* Style your open navigation as needed */
+    }
+
+    #current-section {
+        cursor: pointer;
+    }
+}
+
+@media (min-width: 769px) {
+    .nav-toggle {
+        display: none;
+    }
+}

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benson Basil</title>
     <link rel="icon" href="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/Logo/Logo.jpg" type="image/x-icon">
-    <!-- <link rel="stylesheet" href="styles.css"> --> 
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/components.css">
     <link rel="stylesheet" href="styles/custom.css">
@@ -13,7 +12,23 @@
 <body>
     <canvas id="background-animation"></canvas>
     
-    <header id="sticky-header"></header>
+    <header id="sticky-header"> 
+        <div class="header-content">
+            <img src="https://raw.githubusercontent.com/bensonbasil/Benson_Basil/main/Pictures/Logo/Logo.jpg" alt="Benson Basil" class="profile-pic">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#summary">Summary</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#personal">Personal</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div id="current-section"></div>
+        </div>
+    </header>
 
     <main class="container">
         <h1>BENSON BASIL</h1>
@@ -58,8 +73,6 @@
             <a href="#contact">Contact</a>
         </nav>
     </footer>
-
-    <!-- <script src="script.js"></script>--> 
     <script src="scripts/background.js"></script>
     <script src="scripts/primary.js"></script>
     <script src="scripts/secondary.js"></script>
