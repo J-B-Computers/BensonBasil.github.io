@@ -1,142 +1,84 @@
-// Background Animation
-const canvas = document.getElementById('background-animation');
-const ctx = canvas.getContext('2d');
+        // Background animation script
+        const canvas = document.getElementById('background-effect');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
+        const particles = [];
+        const particleCount = 400;
 
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
-
-const celestialObjects = [];
-const starCount = 200;
-const planetCount = 5;
-const galaxyCount = 10;
-
-let mouse = { x: null, y: null, radius: 50 };
-
-// Create stars, planets, and galaxies
-function createCelestialObjects() {
-    // Create stars
-    for (let i = 0; i < starCount; i++) {
-        celestialObjects.push({
-            type: 'star',
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            radius: Math.random() * 1.5,
-            color: `rgba(255, 255, 255, ${Math.random() * 0.8 + 0.2})`,
-            velocity: { x: (Math.random() - 0.5) * 0.5, y: (Math.random() - 0.5) * 0.5 }
-        });
-    }
-
-    // Create planets
-    for (let i = 0; i < planetCount; i++) {
-        celestialObjects.push({
-            type: 'planet',
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            radius: Math.random() * 20 + 10,
-            color: `hsl(${Math.random() * 360}, 50%, 50%)`,
-            velocity: { x: (Math.random() - 0.5) * 0.2, y: (Math.random() - 0.5) * 0.2 }
-        });
-    }
-
-    // Create galaxies
-    for (let i = 0; i < galaxyCount; i++) {
-        celestialObjects.push({
-            type: 'galaxy',
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            radius: Math.random() * 100 + 50,
-            color: `hsla(${Math.random() * 360}, 70%, 50%, 0.3)`,
-            rotation: Math.random() * Math.PI * 2,
-            velocity: { x: (Math.random() - 0.5) * 0.1, y: (Math.random() - 0.5) * 0.1 }
-        });
-    }
-}
-
-createCelestialObjects();
-
-function drawSpaceBackground() {
-    ctx.fillStyle = '#0a192f';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    celestialObjects.forEach(object => {
-        ctx.beginPath();
-
-        if (object.type === 'star') {
-            ctx.arc(object.x, object.y, object.radius, 0, Math.PI * 2);
-            ctx.fillStyle = object.color;
-            ctx.fill();
-        } else if (object.type === 'planet') {
-            ctx.arc(object.x, object.y, object.radius, 0, Math.PI * 2);
-            ctx.fillStyle = object.color;
-            ctx.fill();
-        } else if (object.type === 'galaxy') {
-            ctx.save();
-            ctx.translate(object.x, object.y);
-            ctx.rotate(object.rotation);
-            ctx.beginPath();
-            ctx.ellipse(0, 0, object.radius, object.radius / 2, 0, 0, Math.PI * 2);
-            ctx.fillStyle = object.color;
-            ctx.fill();
-            ctx.restore();
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2.5 + 0.1,
+                color: `hsl(${Math.random() * 9960}, 50%, 50%)`,
+                speed: Math.random() * .2 + .2,
+                angle: Math.random() * Math.PI * 2
+            });
         }
 
-        // Black hole (mouse) interaction
-        if (mouse.x !== null && mouse.y !== null) {
-            let dx = mouse.x - object.x;
-            let dy = mouse.y - object.y;
-            let distance = Math.sqrt(dx * dx + dy * dy);
-            if (distance < mouse.radius + object.radius) {
-                let angle = Math.atan2(dy, dx);
-                object.x = mouse.x - Math.cos(angle) * (mouse.radius + object.radius);
-                object.y = mouse.y - Math.sin(angle) * (mouse.radius + object.radius);
-            }
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(particle => {
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                ctx.fillStyle = particle.color;
+                ctx.fill();
+
+                particle.x += Math.cos(particle.angle) * particle.speed;
+                particle.y += Math.sin(particle.angle) * particle.speed;
+
+                if (particle.x < 0 || particle.x > canvas.width) particle.angle = Math.PI - particle.angle;
+                if (particle.y < 0 || particle.y > canvas.height) particle.angle = -particle.angle;
+
+                particles.forEach(other => {
+                    const dx = particle.x - other.x;
+                    const dy = particle.y - other.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance / 100})`;
+                        ctx.lineWidth = .2;
+                        ctx.moveTo(particle.x, particle.y);
+                        ctx.lineTo(other.x, other.y);
+                        ctx.stroke();
+                    }
+                });
+            });
+
+            requestAnimationFrame(drawParticles);
         }
 
-        // Move objects
-        object.x += object.velocity.x;
-        object.y += object.velocity.y;
+        drawParticles();
 
-        // Wrap around screen
-        if (object.x < -object.radius) object.x = canvas.width + object.radius;
-        if (object.x > canvas.width + object.radius) object.x = -object.radius;
-        if (object.y < -object.radius) object.y = canvas.height + object.radius;
-        if (object.y > canvas.height + object.radius) object.y = -object.radius;
-    });
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
 
-    // Draw shooting star
-    if (Math.random() < 0.02) {
-        let shootingStar = {
-            x: Math.random() * canvas.width,
-            y: 0,
-            length: Math.random() * 80 + 20,
-            speed: Math.random() * 10 + 5,
-            angle: Math.random() * Math.PI / 4 + Math.PI / 4
-        };
-        ctx.beginPath();
-        ctx.moveTo(shootingStar.x, shootingStar.y);
-        ctx.lineTo(shootingStar.x - Math.cos(shootingStar.angle) * shootingStar.length,
-                   shootingStar.y + Math.sin(shootingStar.angle) * shootingStar.length);
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
-        ctx.lineWidth = 2;
-        ctx.stroke();
-    }
+// Mouse interaction
+let mouse = { x: null, y: null, radius: 100 };
 
-    requestAnimationFrame(drawSpaceBackground);
-}
-
-drawSpaceBackground();
-
-window.addEventListener('mousemove', (event) => {
+canvas.addEventListener('mousemove', (event) => {
     mouse.x = event.x;
     mouse.y = event.y;
+    
+    particles.forEach(particle => {
+        const dx = mouse.x - particle.x;
+        const dy = mouse.y - particle.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < mouse.radius) {
+            const force = (mouse.radius - distance) / mouse.radius;
+            particle.speedX += dx * force * 0.02;
+            particle.speedY += dy * force * 0.02;
+        }
+    });
 });
-
-// Sticky Header
+// --- Sticky Header ---
 const header = document.getElementById('sticky-header');
 const headerContent = header.querySelector('.header-content');
 
@@ -184,12 +126,13 @@ function initializeNavigation() {
     });
 
     // Mobile navigation
-    currentSectionDisplay.addEventListener('click', () => {
-        header.classList.toggle('nav-open');
+    const navToggle = document.querySelector('.nav-toggle');
+    navToggle.addEventListener('click', () => {
+        headerContent.classList.toggle('nav-open');
     });
 }
 
-// Download resume functionality
+// --- Download Resume ---
 document.addEventListener('click', function(e) {
     if (e.target && e.target.id === 'download-resume') {
         e.preventDefault();
@@ -205,7 +148,7 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Load content for each section
+// --- Load Section Content ---
 const sections = ['summary', 'experience', 'education', 'skills', 'projects', 'personal', 'contact'];
 sections.forEach(section => {
     fetch(`${section}.html`)
@@ -215,10 +158,9 @@ sections.forEach(section => {
         });
 });
 
-document.querySelector('.nav-toggle').addEventListener('click', function() {
-    document.querySelector('.header-content').classList.toggle('nav-open');
-});
 
+
+// --- Scroll to Top ---
 document.querySelector('#sticky-header .profile-pic').addEventListener('click', function() {
     window.scrollTo({
         top: 0,
