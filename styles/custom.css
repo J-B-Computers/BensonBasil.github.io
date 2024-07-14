@@ -1,4 +1,4 @@
-/* Contact Section */
+/* Contact Section 
 .contact-grid {
     display: flex;
     justify-content: space-around;
@@ -53,6 +53,120 @@
     color: #64ffda;
     margin-top: 10px;
 }
+ Contact section layout */
+/* Contact Section Styles */
+
+/* Main container layout */
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.contact-info {
+    width: 50%;  /* CUSTOMIZE: Adjust width of contact info section */
+}
+
+.location-info {
+    width: 45%;  /* CUSTOMIZE: Adjust width of location info section */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Contact items styling */
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;  /* CUSTOMIZE: Adjust spacing between contact items */
+}
+
+/* Default icon container size */
+.icon-container {
+    width: 75px;  /* CUSTOMIZE: Default icon size */
+    height: 75px;
+    margin-right: 15px;
+    position: relative;
+}
+
+/* Individual icon sizes - CUSTOMIZE AS NEEDED */
+#email-icon {
+    width: 80px;
+    height: 80px;
+}
+
+#github-icon {
+    width: 60px;
+    height: 60px;
+}
+
+#phone-icon {
+    width: 95px;
+    height: 95px;
+}
+
+#resume-icon {
+    width: 75px;
+    height: 75px;
+}
+
+#linkedin-icon {
+    width: 75px;
+    height: 75px;
+}
+
+/* Icon styling */
+.contact-icon {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.3s ease;
+    object-fit: contain;  /* Ensures icon keeps its aspect ratio */
+}
+
+.contact-icon.active {
+    opacity: 0;
+}
+
+.contact-item:hover .contact-icon.idle {
+    opacity: 0;
+}
+
+.contact-item:hover .contact-icon.active {
+    opacity: 1;
+}
+
+/* Contact link styling */
+.contact-item a {
+    color: #64ffda;  /* CUSTOMIZE: Link color */
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: #ffffff;  /* CUSTOMIZE: Link hover color */
+}
+
+/* Location info styling */
+.location-info h3 {
+    margin-bottom: 15px;
+}
+
+.map-image {
+    width: 100%;
+    max-height: 600px;  /* CUSTOMIZE: Adjust maximum height of the map */
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.map-image:hover {
+    transform: scale(1.02);  /* CUSTOMIZE: Adjust hover zoom effect */
+}
 
 /* Download Resume Button */
 .download-resume {
@@ -90,21 +204,13 @@
     height: auto;
     object-fit: cover;
     transition: transform 0.3s ease;
-    }
+}
 
 .image-container img:hover {
     transform: scale(1.05);
 }
 
-/* Map Image */
-.map-image {
-    width: 100%;
-    max-height: 700px;
-    object-fit: contain;
-    margin-top: 20px;
-}
-
-/* Footer */
+/* Footer Styles */
 footer {
     background-color: rgba(10, 25, 47, 0.9);
     padding: 20px;
@@ -138,7 +244,38 @@ footer {
 }
 
 /* Responsive Design */
+@media (min-width: 1200px) {
+    .contact-container {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .location-info {
+        width: 50%;
+    }
+
+    .map-image {
+        max-height: 450px;  /* CUSTOMIZE: Larger map for big screens */
+    }
+}
+
 @media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .contact-info, .location-info {
+        width: 100%;
+    }
+
+    .location-info {
+        margin-top: 30px;
+    }
+
+    .map-image {
+        max-height: 350px;  /* CUSTOMIZE: Map size for mobile */
+    }
+
     .header-content {
         flex-direction: column;
     }
@@ -169,12 +306,10 @@ footer {
         width: 200px;
         height: 200px;
     }
-}
 
-@media (max-width: 768px) {
     .nav-toggle {
         display: block;
-        /* Style your button as needed */
+        /* CUSTOMIZE: Style your mobile navigation toggle button */
     }
 
     .main-nav {
@@ -183,7 +318,7 @@ footer {
 
     .nav-open .main-nav {
         display: block;
-        /* Style your open navigation as needed */
+        /* CUSTOMIZE: Style your open mobile navigation */
     }
 
     #current-section {
