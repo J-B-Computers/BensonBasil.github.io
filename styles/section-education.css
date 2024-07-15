@@ -1,0 +1,29 @@
+/* Education Section Styles */
+
+.education-item {
+    margin-bottom: 20px;
+}
+
+.education-item h3 {
+    color: #8df98d;
+    margin-bottom: 5px;
+}
+
+.education-item .institution {
+    color: #f9f951;
+    font-style: italic;
+}
+
+.education-item .duration {
+    color: #FFA07A;
+    font-size: 0.9em;
+}
+
+.education-item ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.education-item li {
+    margin-bottom: 5px;
+}

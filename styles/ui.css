@@ -1,0 +1,76 @@
+/* UI Styles for Responsive Design */
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+    }
+
+    #sticky-header nav {
+        margin-top: 10px;
+    }
+
+    #sticky-header nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #sticky-header nav ul li {
+        margin: 5px 0;
+    }
+
+    .image-container {
+        flex-direction: column;
+    }
+
+    .image-container img {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .profile-pic-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .nav-toggle {
+        display: block;
+        /* Style your mobile navigation toggle button here */
+    }
+
+    .main-nav {
+        display: none;
+    }
+
+    .nav-open .main-nav {
+        display: block;
+        /* Style your open mobile navigation here */
+    }
+
+    #current-section {
+        cursor: pointer;
+    }
+
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .contact-info, .location-info {
+        width: 100%;
+    }
+
+    .location-info {
+        margin-top: 30px;
+    }
+
+    .map-image {
+        max-height: 350px;
+    }
+}
+
+@media (min-width: 769px) {
+    .nav-toggle {
+        display: none;
+    }
+}
+
+/* Add any additional UI-related styles here */

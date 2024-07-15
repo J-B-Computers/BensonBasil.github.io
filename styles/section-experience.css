@@ -1,0 +1,36 @@
+/* Experience Section Styles */
+
+.job-separator {
+    border-top: 1px solid #233554;
+    margin: 20px 0;
+}
+
+/* Job Details */
+.job-title, .company, .duration {
+    text-align: left;
+}
+
+.job-title {
+    color: #8df98d;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.company {
+    color: #f9f951;
+    font-style: italic;
+}
+
+.duration {
+    color: #FFA07A;
+    font-size: 0.9em;
+}
+
+.experience-item ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.experience-item li {
+    margin-bottom: 5px;
+}

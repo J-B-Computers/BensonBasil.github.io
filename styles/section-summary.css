@@ -1,0 +1,19 @@
+/* Summary Section Styles */
+
+.summary-content {
+    text-align: justify;
+    line-height: 1.8;
+}
+
+.summary-highlight {
+    color: #64ffda;
+    font-weight: bold;
+}
+
+.summary-quote {
+    font-style: italic;
+    color: #FFA07A;
+    margin: 20px 0;
+    padding: 10px;
+    border-left: 3px solid #64ffda;
+}

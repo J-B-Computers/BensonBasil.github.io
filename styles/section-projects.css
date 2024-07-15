@@ -1,0 +1,39 @@
+/* Projects Section Styles */
+
+.project-item {
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+}
+
+.project-title {
+    color: #8df98d;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.project-description {
+    margin-bottom: 15px;
+}
+
+.project-tech {
+    font-style: italic;
+    color: #64ffda;
+}
+
+.project-links a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.project-links a:hover {
+    color: #64ffda;
+}
