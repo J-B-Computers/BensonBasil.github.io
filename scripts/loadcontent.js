@@ -1,14 +1,14 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const sections = [
-        { id: 'experience', file: 'html/experience.html' },
-        { id: 'skills', file: 'html/skills.html' },
-        { id: 'education', file: 'html/education.html' },
-        { id: 'summary', file: 'html/summary.html' },
-        { id: 'projects', file: 'html/projects.html' },
-        { id: 'header', file: 'html/header.html' },
-        { id: 'personal', file: 'html/personal.html' },
-        { id: 'contact', file: 'html/contact.html' },
+        { id: 'experience', file: 'experience.html' },
+        { id: 'skills', file: 'skills.html' },
+        { id: 'education', file: 'education.html' },
+        { id: 'summary', file: 'summary.html' },
+        { id: 'projects', file: 'projects.html' },
+        { id: 'header', file: 'header.html' },
+        { id: 'personal', file: 'personal.html' },
+        { id: 'contact', file: 'contact.html' },
     ];
 
     sections.forEach(section => {
